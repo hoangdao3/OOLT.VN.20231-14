@@ -1,22 +1,24 @@
 package travelingSalesman;
 
 public class City {
+    private final String name;
     private int x;
     private int y;
-    private final String name;
 
     public City(int x, int y, String name) {
         this.x = x;
         this.y = y;
         this.name = name;
     }
-    public double measureDistance(City city){
+
+    public double measureDistance(City city) {
         double kcX = city.getX() - this.getX();
         double kcY = city.getY() - this.getY();
-        return Math.sqrt(kcX * kcX + kcY * kcY );
+        return Math.sqrt(kcX * kcX + kcY * kcY);
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return this.getName();
     }
 

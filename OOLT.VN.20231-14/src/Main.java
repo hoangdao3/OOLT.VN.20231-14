@@ -1,11 +1,14 @@
-import driver.GraphicsDriver;
+import drivers.console.ConsoleDriver;
+import drivers.graphic.GraphicsDriver;
 
 import java.io.IOException;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
-public class Main  {
+public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         new GraphicsDriver();
+        ConsoleDriver consoleDriver = new ConsoleDriver("cities.txt");
+        consoleDriver.print();
     }
 }

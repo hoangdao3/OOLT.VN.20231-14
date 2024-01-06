@@ -3,29 +3,35 @@ package travelingSalesman;
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
-public class GeneticAlgorithms {
-    private ArrayList<City> initialRoute;
-    public GeneticAlgorithms(ArrayList<City> initialRoute){
+public class GeneticAlgorithm {
+    private final ArrayList<City> initialRoute;
+
+    public GeneticAlgorithm(ArrayList<City> initialRoute) {
         this.initialRoute = initialRoute;
     }
-    public ArrayList<City> getInitialRoute(){
+
+    public ArrayList<City> getInitialRoute() {
         return initialRoute;
     }
+
     public Population evolve(Population population) {
         return mutatePopulation(crossoverPopulation(population));
     }
+
     private Population mutatePopulation(Population population) {
         population.getRoutes().stream().filter(x -> population.getRoutes().indexOf(x) >= Settings.NUM_OF_ELITE_ROUTES).forEach(x -> mutateRoute(x));
         return population;
     }
-    private void mutateRoute(Route route){
+
+    private void mutateRoute(Route route) {
         route.getCityList().stream().filter(x -> Math.random() < Settings.MUTATION_RATE).forEach(cityX -> {
-            int y = (int) (route.getCityList().size()*Math.random());
+            int y = (int) (route.getCityList().size() * Math.random());
             City cityY = route.getCityList().get(y);
             route.getCityList().set(route.getCityList().indexOf(cityX), cityY);
             route.getCityList().set(y, cityX);
         });
     }
+
     private Population crossoverPopulation(Population population) {
         Population crossoverPopulation = new Population(population.getRoutes().size(), this);
         IntStream.range(0, Settings.NUM_OF_ELITE_ROUTES).forEach(x -> crossoverPopulation.getRoutes().set(x, population.getRoutes().get(x)));
@@ -36,6 +42,7 @@ public class GeneticAlgorithms {
         });
         return crossoverPopulation;
     }
+
     private Population tournamentSelection(Population population) {
         Population tournamentPopulation = new Population(Settings.TOURNAMENT_SELECTION_SIZE, this);
         IntStream.range(0, Settings.TOURNAMENT_SELECTION_SIZE).forEach(x -> {
@@ -46,6 +53,7 @@ public class GeneticAlgorithms {
         tournamentPopulation.sortRoutesByFitness();
         return tournamentPopulation;
     }
+
     private Route crossoverRoute(Route route1, Route route2) {
         Route crossoverRoute = new Route(this);
         Route tempRoute1 = route1;
@@ -59,6 +67,7 @@ public class GeneticAlgorithms {
         }
         return fillNulls(crossoverRoute, tempRoute2);
     }
+
     private Route fillNulls(Route crossoverRoute, Route route) {
         route.getCityList().stream().filter(x -> !crossoverRoute.getCityList().contains(x)).forEach(cityX -> {
             for (int y = 0; y < route.getCityList().size(); y++) {
