@@ -1,6 +1,12 @@
+/**
+ * @project TPSSolver
+ * @author Mitchell Vu
+ * @since December 2023
+ */
+
 package drivers.console;
 
-import travelingSalesman.City;
+import traveling_salesman.City;
 
 import java.io.BufferedReader;
 import java.io.File;

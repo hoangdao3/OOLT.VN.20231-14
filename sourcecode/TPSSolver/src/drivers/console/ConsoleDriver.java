@@ -1,18 +1,17 @@
 /**
- * @project OOLT.VN.20231-14
+ * @project TPSSolver
  * @author Mitchell Vu
- * @since January 2024
+ * @since December 2023
  */
 
 package drivers.console;
 
-import travelingSalesman.City;
-import travelingSalesman.GeneticAlgorithm;
-import travelingSalesman.Population;
-import travelingSalesman.Settings;
+import traveling_salesman.City;
+import traveling_salesman.GeneticAlgorithm;
+import traveling_salesman.Population;
+import traveling_salesman.Settings;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package travelingSalesman;
+package traveling_salesman;
 
 public class Settings {
     public static int POPULATION_SIZE = 10;

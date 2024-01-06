@@ -1,4 +1,4 @@
-package travelingSalesman;
+package traveling_salesman;
 
 public class City {
     private final String name;
@@ -15,11 +15,6 @@ public class City {
         double kcX = city.getX() - this.getX();
         double kcY = city.getY() - this.getY();
         return Math.sqrt(kcX * kcX + kcY * kcY);
-    }
-
-    @Override
-    public String toString() {
-        return this.getName();
     }
 
     public int getX() {
@@ -40,5 +35,10 @@ public class City {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
     }
 }

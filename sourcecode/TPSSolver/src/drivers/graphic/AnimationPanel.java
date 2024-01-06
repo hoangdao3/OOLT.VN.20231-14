@@ -1,8 +1,14 @@
+/**
+ * @project TPSSolver
+ * @author Mitchell Vu
+ * @since December 2023
+ */
+
 package drivers.graphic;
 
-import travelingSalesman.City;
-import travelingSalesman.Population;
-import travelingSalesman.Settings;
+import traveling_salesman.City;
+import traveling_salesman.Population;
+import traveling_salesman.Settings;
 
 import javax.swing.*;
 import java.awt.*;

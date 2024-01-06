@@ -1,12 +1,12 @@
 /**
- * @project OOLT.VN.20231-14
+ * @project TPSSolver
  * @author Mitchell Vu
- * @since January 2024
+ * @since December 2023
  */
 
 package drivers.graphic;
 
-import travelingSalesman.Settings;
+import traveling_salesman.Settings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,9 +30,7 @@ public class GraphicsDriver extends javax.swing.JFrame {
 
     // divider lines
     private javax.swing.JSeparator divider1;
-    private javax.swing.JSeparator divider2;
     private javax.swing.JSeparator divider3;
-    private javax.swing.JSeparator divider4;
 
     // Buttons panel with start,random and select.
     private javax.swing.JPanel buttonsPanel;
@@ -94,9 +92,7 @@ public class GraphicsDriver extends javax.swing.JFrame {
         settingsPanel = new javax.swing.JPanel();
 
         divider1 = new javax.swing.JSeparator();
-        divider2 = new javax.swing.JSeparator();
         divider3 = new javax.swing.JSeparator();
-        divider4 = new javax.swing.JSeparator();
 
         generationLabel = new java.awt.Label();
         totalDistanceLabel = new java.awt.Label();

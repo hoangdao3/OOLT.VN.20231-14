@@ -1,4 +1,4 @@
-package travelingSalesman;
+package traveling_salesman;
 
 import java.util.ArrayList;
 import java.util.Arrays;
