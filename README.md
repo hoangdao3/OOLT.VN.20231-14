@@ -9,7 +9,7 @@ This is repository storing source code of mini-project for HUST-Elitech Object-O
 | Vũ Minh Hiếu         | 20194563   | UI Programing            |
 | Bùi Khánh Hoàng      | 20215273   | Presentation Preparation |
 | Đào Nguyễn Huy Hoàng | 20210380   | Algorithm design         |
-| Lâm Việt Hoàng       | 20215274   | Algorithm design         |
+| Lâm Việt Hoàng       | 20215274   | Class Diagram            |
 
 ## Project Requirement
 
