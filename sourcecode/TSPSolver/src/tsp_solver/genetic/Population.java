@@ -1,4 +1,8 @@
-package traveling_salesman;
+package tsp_solver.genetic;
+
+import tsp_solver.traveling_salesman.City;
+import tsp_solver.traveling_salesman.Route;
+import tsp_solver.traveling_salesman.Settings;
 
 import java.util.ArrayList;
 import java.util.stream.IntStream;

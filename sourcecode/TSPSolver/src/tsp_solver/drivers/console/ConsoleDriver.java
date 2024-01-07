@@ -1,15 +1,15 @@
 /**
- * @project TPSSolver
+ * @project tsp_solver.TSPSolver
  * @author Mitchell Vu
  * @since December 2023
  */
 
-package drivers.console;
+package tsp_solver.drivers.console;
 
-import traveling_salesman.City;
-import traveling_salesman.GeneticAlgorithm;
-import traveling_salesman.Population;
-import traveling_salesman.Settings;
+import tsp_solver.traveling_salesman.City;
+import tsp_solver.genetic.GeneticAlgorithm;
+import tsp_solver.genetic.Population;
+import tsp_solver.traveling_salesman.Settings;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,8 +17,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-// ConsoleDriver reads a file path, initializes a genetic algorithm, and prints the resulting values to the console.
-// You can use it for large data instead of clicking them into GUI
+// ConsoleDriver reads a file path, initializes a tsp_solver.genetic algorithm, and prints the resulting values to the console.
+// You can use it for large tsp_solver.data instead of clicking them into GUI
 public class ConsoleDriver {
     private final ArrayList<City> initialRoute;
 
@@ -40,7 +40,7 @@ public class ConsoleDriver {
         initialRoute = reader.read();
     }
 
-    // Start the genetic algorithm and print the values.
+    // Start the tsp_solver.genetic algorithm and print the values.
     public void print() {
         Population population = new Population(Settings.POPULATION_SIZE, initialRoute);
         population.sortRoutesByFitness();
@@ -90,7 +90,7 @@ public class ConsoleDriver {
     // Print the population table with route details, fitness, and distance.
     private void printPopulation(Population population) {
         population.getRoutes().forEach(x -> {
-            System.out.println(Arrays.toString(x.getCityList().toArray()) + " | " + String.format("%.4f", x.getFitness()) + " | " + String.format("%.2f", x.totalDistance()));
+            System.out.println(Arrays.toString(x.getCities().toArray()) + " | " + String.format("%.4f", x.getFitness()) + " | " + String.format("%.2f", x.totalDistance()));
         });
         System.out.println();
     }

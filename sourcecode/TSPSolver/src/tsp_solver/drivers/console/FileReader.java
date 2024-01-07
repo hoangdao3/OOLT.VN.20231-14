@@ -1,12 +1,12 @@
 /**
- * @project TPSSolver
+ * @project tsp_solver.TSPSolver
  * @author Mitchell Vu
  * @since December 2023
  */
 
-package drivers.console;
+package tsp_solver.drivers.console;
 
-import traveling_salesman.City;
+import tsp_solver.traveling_salesman.City;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-//  Read input data from a file and convert it into an ArrayList of City objects.
+//  Read input tsp_solver.data from a file and convert it into an ArrayList of City objects.
 public class FileReader {
     private final File file;
 

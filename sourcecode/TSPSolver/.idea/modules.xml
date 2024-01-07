@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TPSSolver.iml" filepath="$PROJECT_DIR$/TPSSolver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TSPSolver.iml" filepath="$PROJECT_DIR$/TSPSolver.iml" />
     </modules>
   </component>
 </project>

@@ -1,12 +1,12 @@
 /**
- * @project TPSSolver
+ * @project tsp_solver.TSPSolver
  * @author Mitchell Vu
  * @since December 2023
  */
 
-package drivers.graphic;
+package tsp_solver.drivers.graphic;
 
-import traveling_salesman.Settings;
+import tsp_solver.traveling_salesman.Settings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -115,7 +115,7 @@ public class GraphicsDriver extends javax.swing.JFrame {
         // Settings for the header panel.
         headerPanel.setBackground(new java.awt.Color(51, 51, 51));
 
-        // Labels that display values from the genetic algorithm.
+        // Labels that display values from the tsp_solver.genetic algorithm.
 
         // Label for displaying the current generation number.
         generationLabel.setFont(new java.awt.Font("Segoe UI", 0, 18));

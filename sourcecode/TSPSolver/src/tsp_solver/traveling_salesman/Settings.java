@@ -1,4 +1,4 @@
-package traveling_salesman;
+package tsp_solver.traveling_salesman;
 
 public class Settings {
     public static int POPULATION_SIZE = 10;
