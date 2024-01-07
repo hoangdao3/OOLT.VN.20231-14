@@ -1,15 +1,17 @@
 /**
- * @project TPSSolver
+ * @project tsp_solver.TSPSolver
  * @author Mitchell Vu
  * @since December 2023
  */
 
-package drivers.graphic;
+package tsp_solver.drivers.graphic;
 
-import traveling_salesman.City;
-import traveling_salesman.GeneticAlgorithm;
-import traveling_salesman.Population;
-import traveling_salesman.Settings;
+import tsp_solver.drivers.graphic.AnimationPanel;
+import tsp_solver.drivers.graphic.GraphicsDriver;
+import tsp_solver.genetic.GeneticAlgorithm;
+import tsp_solver.genetic.Population;
+import tsp_solver.traveling_salesman.City;
+import tsp_solver.traveling_salesman.Settings;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -53,7 +55,7 @@ public class GeneticAlgorithmThread implements Runnable {
         thread = null;
     }
 
-    // Whole process of the genetic algorithm:
+    // Whole process of the tsp_solver.genetic algorithm:
     @Override
     public void run() {
         if (!running) return;

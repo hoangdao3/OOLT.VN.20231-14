@@ -1,0 +1,13 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "/Users/vmhieu/javafx-sdk-21.0.1/lib/javafx.controls.jar",
+    "/Users/vmhieu/javafx-sdk-21.0.1/lib/javafx.fxml.jar",
+    "/Users/vmhieu/javafx-sdk-21.0.1/lib/javafx.graphics.jar",
+    "/Users/vmhieu/javafx-sdk-21.0.1/lib/javafx.media.jar",
+    "/Users/vmhieu/javafx-sdk-21.0.1/lib/javafx.swing.jar",
+    "/Users/vmhieu/javafx-sdk-21.0.1/lib/javafx.web.jar",
+    "/Users/vmhieu/javafx-sdk-21.0.1/lib/javafx-swt.jar",
+    "/Users/vmhieu/javafx-sdk-21.0.1/lib/javafx.base.jar"
+  ]
+}

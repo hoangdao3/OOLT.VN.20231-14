@@ -1,14 +1,14 @@
 /**
- * @project TPSSolver
+ * @project tsp_solver.TSPSolver
  * @author Mitchell Vu
  * @since December 2023
  */
 
-package drivers.graphic;
+package tsp_solver.drivers.graphic;
 
-import traveling_salesman.City;
-import traveling_salesman.Population;
-import traveling_salesman.Settings;
+import tsp_solver.genetic.Population;
+import tsp_solver.traveling_salesman.City;
+import tsp_solver.traveling_salesman.Settings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class AnimationPanel extends JPanel {
     // Integer representing how many cities has been selected
     public int count;
-    // Runnable thread that controls the genetic algorithm
+    // Runnable thread that controls the tsp_solver.genetic algorithm
     public GeneticAlgorithmThread geneticAlgorithmThread = new GeneticAlgorithmThread(this);
     // Format pattern for rounding doubles
     private DecimalFormat DF = new DecimalFormat("#.###");
@@ -35,7 +35,7 @@ public class AnimationPanel extends JPanel {
     private Stroke stroke = new BasicStroke(3);
 
     public AnimationPanel() {
-                this.geneticAlgorithmThread.initialRoute = new ArrayList<City>();
+        this.geneticAlgorithmThread.initialRoute = new ArrayList<City>();
         this.setBackground(Color.BLACK);
         this.setVisible(true);
     }
@@ -72,7 +72,7 @@ public class AnimationPanel extends JPanel {
         drawBestRoute();
         g2D.setColor(Color.DARK_GRAY);
         geneticAlgorithmThread.population.getRoutes().forEach(x -> {
-            ArrayList<City> route = x.getCityList();
+            ArrayList<City> route = x.getCities();
             drawRoute(route);
         });
         drawBestRoute();
@@ -82,7 +82,7 @@ public class AnimationPanel extends JPanel {
     private void drawBestRoute() {
         g2D.setColor(Color.BLUE);
         g2D.setStroke(stroke);
-        drawRoute(geneticAlgorithmThread.population.getRoutes().get(0).getCityList());
+        drawRoute(geneticAlgorithmThread.population.getRoutes().get(0).getCities());
         g2D.setStroke(new BasicStroke(0));
         g2D.setColor(Color.WHITE);
     }

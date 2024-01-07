@@ -1,4 +1,8 @@
-package traveling_salesman;
+package tsp_solver.genetic;
+
+import tsp_solver.traveling_salesman.City;
+import tsp_solver.traveling_salesman.Route;
+import tsp_solver.traveling_salesman.Settings;
 
 import java.util.ArrayList;
 import java.util.stream.IntStream;
@@ -24,11 +28,11 @@ public class GeneticAlgorithm {
     }
 
     private void mutateRoute(Route route) {
-        route.getCityList().stream().filter(x -> Math.random() < Settings.MUTATION_RATE).forEach(cityX -> {
-            int y = (int) (route.getCityList().size() * Math.random());
-            City cityY = route.getCityList().get(y);
-            route.getCityList().set(route.getCityList().indexOf(cityX), cityY);
-            route.getCityList().set(y, cityX);
+        route.getCities().stream().filter(x -> Math.random() < Settings.MUTATION_RATE).forEach(cityX -> {
+            int y = (int) (route.getCities().size() * Math.random());
+            City cityY = route.getCities().get(y);
+            route.getCities().set(route.getCities().indexOf(cityX), cityY);
+            route.getCities().set(y, cityX);
         });
     }
 
@@ -62,17 +66,17 @@ public class GeneticAlgorithm {
             tempRoute1 = route2;
             tempRoute2 = route1;
         }
-        for (int x = 0; x < crossoverRoute.getCityList().size() / 2; x++) {
-            crossoverRoute.getCityList().set(x, tempRoute1.getCityList().get(x));
+        for (int x = 0; x < crossoverRoute.getCities().size() / 2; x++) {
+            crossoverRoute.getCities().set(x, tempRoute1.getCities().get(x));
         }
         return fillNulls(crossoverRoute, tempRoute2);
     }
 
     private Route fillNulls(Route crossoverRoute, Route route) {
-        route.getCityList().stream().filter(x -> !crossoverRoute.getCityList().contains(x)).forEach(cityX -> {
-            for (int y = 0; y < route.getCityList().size(); y++) {
-                if (crossoverRoute.getCityList().get(y) == null) {
-                    crossoverRoute.getCityList().set(y, cityX);
+        route.getCities().stream().filter(x -> !crossoverRoute.getCities().contains(x)).forEach(cityX -> {
+            for (int y = 0; y < route.getCities().size(); y++) {
+                if (crossoverRoute.getCities().get(y) == null) {
+                    crossoverRoute.getCities().set(y, cityX);
                     break;
                 }
             }

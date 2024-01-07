@@ -1,4 +1,4 @@
-package traveling_salesman;
+package tsp_solver.traveling_salesman;
 
 public class City {
     private final String name;
