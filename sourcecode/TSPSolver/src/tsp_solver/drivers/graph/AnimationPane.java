@@ -6,7 +6,6 @@
 
 package tsp_solver.drivers.graph;
 
-import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -20,11 +19,14 @@ import tsp_solver.traveling_salesman.Settings;
 import java.util.ArrayList;
 
 public class AnimationPane extends Pane {
+    private final GraphController graphController;
     public GAThread thread = new GAThread(this);
 
-    public AnimationPane() {
+    public AnimationPane(GraphController graphController) {
         super();
+        this.graphController = graphController;
         this.thread.initialRoute = new ArrayList<City>();
+
         VBox.setVgrow(this, Priority.ALWAYS);
         this.setStyle("-fx-background-color: black;");
         this.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -32,6 +34,10 @@ public class AnimationPane extends Pane {
 
     public void startAnimation() {
         if (!thread.initialRoute.isEmpty()) {
+            setGenerationLabel("0");
+            setBestDistanceTotalLabel("0.00");
+            setHighestFitnessLabel("0.00");
+
             thread.population = new Population(Settings.POPULATION_SIZE, thread.initialRoute);
             thread.population.sortRoutesByFitness();
             drawPopulation();
@@ -44,20 +50,18 @@ public class AnimationPane extends Pane {
         drawBestRoute();
         thread.population.getRoutes().forEach(x -> {
             ArrayList<City> route = x.getCities();
-            drawRoute(route, Color.DARKGRAY);
+            drawRoute(route, Color.rgb(51, 56, 63), 1);
         });
         drawBestRoute();
     }
 
     private void drawBestRoute() {
-        drawRoute(thread.population.getRoutes().get(0).getCities(), Color.BLUE);
+        drawRoute(thread.population.getRoutes().get(0).getCities(), Color.BLUE, 3);
     }
 
-    private void drawRoute(ArrayList<City> route, Color color) {
+    private void drawRoute(ArrayList<City> route, Color color, int strokeWidth) {
         City currentCity;
         City nextCity;
-
-        this.getChildren().removeIf((Node t) -> t.getClass().getSimpleName().equals("Line"));
 
         for (int i = 0; i < route.size() - 1; i++) {
             currentCity = route.get(i);
@@ -65,7 +69,7 @@ public class AnimationPane extends Pane {
 
             Line line = new Line(currentCity.getX(), currentCity.getY(), nextCity.getX(), nextCity.getY());
             line.setStroke(color);
-            line.setStrokeWidth(3);
+            line.setStrokeWidth(strokeWidth);
             this.getChildren().add(line);
             line.toBack();
         }
@@ -97,10 +101,12 @@ public class AnimationPane extends Pane {
 
     protected void drawRouteAndCity() {
         this.getChildren().clear();
+
         if (this.thread.population != null) {
             if (this.thread.running) drawPopulation();
             else drawBestRoute();
         }
+
         for (City city : thread.initialRoute) {
             int x = city.getX();
             int y = city.getY();
@@ -108,5 +114,17 @@ public class AnimationPane extends Pane {
             Circle circle = new Circle(x - 2, y - 2, 4, Color.WHITE);
             this.getChildren().add(circle);
         }
+    }
+
+    public void setBestDistanceTotalLabel(String label) {
+        graphController.setBestDistanceTotalLabel(label);
+    }
+
+    public void setGenerationLabel(String label) {
+        graphController.setGenerationLabel(label);
+    }
+
+    public void setHighestFitnessLabel(String label) {
+        graphController.setHighestFitnessLabel(label);
     }
 }

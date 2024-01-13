@@ -6,6 +6,7 @@
 
 package tsp_solver.drivers.graph;
 
+import javafx.application.Platform;
 import tsp_solver.genetic.GeneticAlgorithm;
 import tsp_solver.genetic.Population;
 import tsp_solver.traveling_salesman.City;
@@ -16,7 +17,8 @@ import java.util.ArrayList;
 
 public class GAThread implements Runnable {
     private final AnimationPane pane;
-    private final DecimalFormat DF = new DecimalFormat("#.###");
+    private final DecimalFormat DF = new DecimalFormat("#.##");
+
     // Arraylist of cities, storing the first route.
     // The initial route contains cities with the same name as their index.
     public ArrayList<City> initialRoute;
@@ -30,8 +32,7 @@ public class GAThread implements Runnable {
     }
 
     public void start() {
-        if (population == null)
-            return;
+        if (population == null) return;
         generationNumber = 0;
         running = true;
         thread = new Thread(this);
@@ -39,8 +40,7 @@ public class GAThread implements Runnable {
     }
 
     public void stop() {
-        if (thread == null)
-            return;
+        if (thread == null) return;
         running = false;
         thread.interrupt();
         thread = null;
@@ -48,24 +48,26 @@ public class GAThread implements Runnable {
 
     @Override
     public void run() {
-        if (!running)
-            return;
+        if (!running) return;
 
         GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(initialRoute);
 
         while (running && generationNumber < Settings.GENERATION_LIMIT + 1) {
-            // GraphicsDriver.generationLabel.setText("Generation: " + generationNumber++);
             generationNumber++;
             population = geneticAlgorithm.evolve(population);
             population.sortRoutesByFitness();
-            // System.out.println(DF.format(population.getRoutes().get(0).getFitness()));
-            // GraphicsDriver.fitnessLabel.setText("Highest Fitness :" +
-            // DF.format(population.getRoutes().get(0).getFitness()));
-            // GraphicsDriver.totalDistanceLabel.setText(" Best total distance: "
-            // +population.getRoutes().get(0).totalDistance());
-            System.out.println(population.getRoutes().get(0).totalDistance());
-            // remove everything from the pane
-            System.out.println(geneticAlgorithm.getInitialRoute().toString());
+
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    pane.setGenerationLabel(String.valueOf(generationNumber));
+                    pane.setBestDistanceTotalLabel(DF.format(population.getRoutes().get(0).totalDistance()));
+                    pane.setHighestFitnessLabel(DF.format(population.getRoutes().get(0).getFitness()));
+
+                    // Remove everything from the pane
+                    pane.drawRouteAndCity();
+                }
+            });
 
             // Pause the thread for the specified delay
             try {
@@ -76,6 +78,5 @@ public class GAThread implements Runnable {
         }
 
         running = false;
-        // this.pane.getChildren().clear();
     }
 }

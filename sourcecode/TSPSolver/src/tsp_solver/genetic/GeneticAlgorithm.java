@@ -23,7 +23,7 @@ public class GeneticAlgorithm {
     }
 
     private Population mutatePopulation(Population population) {
-        population.getRoutes().stream().filter(x -> population.getRoutes().indexOf(x) >= Settings.NUM_OF_ELITE_ROUTES).forEach(x -> mutateRoute(x));
+        population.getRoutes().stream().filter(x -> population.getRoutes().indexOf(x) >= Settings.NUM_OF_ELITE_ROUTES).forEach(this::mutateRoute);
         return population;
     }
 
