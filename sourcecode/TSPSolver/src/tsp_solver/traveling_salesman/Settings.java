@@ -7,5 +7,5 @@ public class Settings {
     public static int GENERATION_LIMIT = 30;
     public static double MUTATION_RATE = 0.05;
     public static int TOURNAMENT_SELECTION_SIZE = 4;
-    public static int DELAY = 20;
+    public static int DELAY = 200;
 }

@@ -124,16 +124,16 @@
    <top>
       <MenuBar prefHeight="0.0" prefWidth="688.0" BorderPane.alignment="CENTER">
          <menus>
-            <Menu mnemonicParsing="false" text="Help">
+            <Menu mnemonicParsing="false" text="Options">
                <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" text="Help" />
                </items>
             </Menu>
          </menus>
       </MenuBar>
    </top>
    <center>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <VBox fx:id="centerVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="20.0" spacing="20.0">
                <children>
@@ -144,7 +144,7 @@
                               <Font name="Roboto Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" text="0">
+                        <Label fx:id="generationLabel" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" text="0">
                            <font>
                               <Font name="Roboto" size="14.0" />
                            </font>
@@ -159,7 +159,7 @@
                               <Font name="Roboto Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" text="0.00">
+                        <Label fx:id="bestDistanceTotalLabel" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" text="0.00">
                            <font>
                               <Font name="Roboto" size="14.0" />
                            </font>
@@ -174,7 +174,7 @@
                               <Font name="Roboto Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" text="0.00">
+                        <Label fx:id="highestFitnessLabel" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" text="0.00">
                            <font>
                               <Font name="Roboto" size="14.0" />
                            </font>
@@ -186,7 +186,6 @@
                   <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                </padding>
             </HBox>
-            <VBox fx:id="centerVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </center>

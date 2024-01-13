@@ -10,9 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import tsp_solver.traveling_salesman.Settings;
 
@@ -20,11 +19,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GraphController implements Initializable {
-    private final Number[] cityChoices = { 10, 15, 20, 25, 30, 40, 50 };
-    private final Number[] populationChoices = { 5, 10, 15, 20, 30, 40, 50 };
-    private final Number[] generationChoices = { 30, 50, 100, 200, 300, 500, 800, 100 };
-    private final Number[] tournamentSelectionChoices = { 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    private final Number[] eliteRouteChoices = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+    private final Number[] cityChoices = {10, 15, 20, 25, 30, 40, 50};
+    private final Number[] populationChoices = {5, 10, 15, 20, 30, 40, 50};
+    private final Number[] generationChoices = {30, 50, 100, 200, 300, 500, 800, 100};
+    private final Number[] tournamentSelectionChoices = {2, 3, 4, 5, 6, 7, 8, 9, 10};
+    private final Number[] eliteRouteChoices = {0, 1, 2, 3, 4, 5, 6, 7, 8};
 
     @FXML
     private ChoiceBox<Number> cityQuantityChoiceBox;
@@ -46,6 +45,15 @@ public class GraphController implements Initializable {
 
     @FXML
     private VBox centerVBox;
+
+    @FXML
+    private Label bestDistanceTotalLabel;
+
+    @FXML
+    private Label generationLabel;
+
+    @FXML
+    private Label highestFitnessLabel;
 
     private AnimationPane animationPane;
 
@@ -118,7 +126,7 @@ public class GraphController implements Initializable {
         });
 
         // Add Pane to VBox
-        this.animationPane = new AnimationPane();
+        this.animationPane = new AnimationPane(this);
         centerVBox.getChildren().add(this.animationPane);
     }
 
@@ -132,5 +140,17 @@ public class GraphController implements Initializable {
     public void handleRandom(ActionEvent actionEvent) {
         this.animationPane.thread.stop();
         this.animationPane.randomCities();
+    }
+
+    public void setBestDistanceTotalLabel(String label) {
+        bestDistanceTotalLabel.setText(label);
+    }
+
+    public void setGenerationLabel(String label) {
+        generationLabel.setText(label);
+    }
+
+    public void setHighestFitnessLabel(String label) {
+        highestFitnessLabel.setText(label);
     }
 }

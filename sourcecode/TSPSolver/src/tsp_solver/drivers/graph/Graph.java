@@ -14,10 +14,6 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class Graph extends Application {
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Graph.fxml")));
